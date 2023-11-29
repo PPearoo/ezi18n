@@ -14,12 +14,11 @@
  ```py
  import ezi18n
  import random
- from typing import Literal
-
- _ = ezi18n.Translator() # if you don't provide anything in the brackets, it will look for the file's name's language JSON file. If the main file is main.py, it will look for main_lang.json - unless you provide a base filename (in this case: main) and/or a suffix (by default: _lang)
+ 
+ _ = ezi18n.Translator() # if you don't provide anything in the brackets, it will look for the file's name's language JSON file. If the main file is  main.py, it will look for main_lang.json - unless you provide a base filename (in this case: main) and/or a suffix (by default: _lang)
  dice = random.randint(1, 6)
  language = input("What's your native language? / Was ist Deine Muttersprache? (en/de) >>> ")
-
+ 
  print(_("dice_result", language, dice=dice))
  ```
  ```json
