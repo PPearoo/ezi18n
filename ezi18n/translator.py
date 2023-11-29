@@ -62,6 +62,8 @@ class Translator:
             logging.error("No translations for language {}".format(lang))
             return text
         try:
+            if isinstance(translations[text], list):
+                return [i.format(**kwargs) for i in translations[text]]
             return translations[text].format(**kwargs)
         except KeyError:
             logging.error("Translation for \"{}\" not found for language {}".format(text, lang))
