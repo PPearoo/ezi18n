@@ -5,7 +5,7 @@ from typing import Any, List, Optional
 from sys import argv
 
 class Translator:
-    """Custom-made i18n implementation for Lumin."""
+    """Localize your apps easily and quickly."""
     def __init__(self, filename: Optional[str] = None, suffix: Optional[str] = "_lang") -> None:
         """
         Creates a new Translator object.
