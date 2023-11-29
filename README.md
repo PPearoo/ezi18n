@@ -1,7 +1,4 @@
-# ez-i18n
- An easy implementation of i18n into Python.
- 
- [Github](https://github.com/PearooXD/ezi18n)
+[Github](https://github.com/PearooXD/ezi18n) | [PyPI](https://pypi.org/project/ezi18n/)
 
 --------
 ## Setting up
