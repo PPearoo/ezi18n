@@ -29,7 +29,7 @@ class Translator:
         """
         self.filename = filename or argv[0][:-3]
         try:
-            with open(self.filename + suffix + ".json", "r") as f:
+            with open(self.filename + suffix + ".json", "r", encoding="utf-8") as f:
                 self.file = json.load(f)
         except:
             raise ValueError("No translation file found for {}".format(os.path.basename(self.filename)))
