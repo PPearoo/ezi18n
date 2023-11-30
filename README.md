@@ -42,18 +42,18 @@
  
  _ = ezi18n.Translator("main", "_plurals") # this will look for main_plurals.json as the language JSON file
  apples = int(input("How many apples do you have? >>> "))
- language = locale.getdefaultlocale()[0][:2] # this will return the default OS language, such as en, hu, de, fr, es etc.
+ language = locale.getlocale()[0][:2] # this will return the default OS language, such as en, hu, de, fr, es etc.
  
  print(_.one("apples", apples, language, apples=apples))
  ```
  ```json
  {
-    "en": {
-        "apples": ["You only have one apple! What a loser...", "You have {apples} apples!"]
-    },
-    "hu": {
-        "apples": ["{apple} almád van!"]
-    }
+     "en": {
+         "apples": ["You only have one apple! What a loser...", "You have {apples} apples!"]
+     },
+     "hu": {
+         "apples": ["{apples} almád van!"]
+     }
  }
  ```
 
