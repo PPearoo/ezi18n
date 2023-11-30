@@ -56,18 +56,17 @@ class Translator:
             `List[str]`
                 If the translation is a list, it returns the list of translated strings.
         """
-        try:
-            translations = self.file[lang]
-        except KeyError:
+        translations = self.file.get(lang)
+        if not translations:
             logging.error("No translations for language {}".format(lang))
-            return text
-        try:
-            if isinstance(translations[text], list):
+            return []
+        trans_text = translations.get(text)
+        if trans_text:
+            if isinstance(trans_text, list):
                 return [i.format(**kwargs) for i in translations[text]]
-            return translations[text].format(**kwargs)
-        except KeyError:
+        else:
             logging.error("Translation for \"{}\" not found for language {}".format(text, lang))
-            return text
+            return []
     
     translate = t
     
@@ -99,9 +98,9 @@ class Translator:
         if type(trans) == str:
             raise TypeError("Translation for \"{}\" is not a list".format(text))
         if num == 1:
-            return self.t(text, lang, **kwargs)[0]
+            return trans[0] if trans else None
         else:
-            return self.t(text, lang, **kwargs)[-1]
+            return trans[-1] if trans else None
         
     one = o
     
