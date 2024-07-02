@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/ezi18n
+      url: https://pypi.org/project/ezi18n/
     permissions:
       id-token: write
     steps:
