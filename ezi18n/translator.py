@@ -34,7 +34,7 @@ class Translator:
         except:
             raise ValueError("No translation file found for {}".format(os.path.basename(self.filename)))
     
-    def t(self, text: str, lang: str, **kwargs: Any) -> str or List[str]:
+    def t(self, text: str, lang: str, **kwargs: Any) -> str | List[str]:
         """
         Gets the translation of a string like it's done in i18n.
         
@@ -59,18 +59,19 @@ class Translator:
         translations = self.file.get(lang)
         if not translations:
             logging.error("No translations for language {}".format(lang))
-            return []
+            return text
         trans_text = translations.get(text)
         if trans_text:
             if isinstance(trans_text, list):
                 return [i.format(**kwargs) for i in translations[text]]
+            return translations[text].format(**kwargs)
         else:
             logging.error("Translation for \"{}\" not found for language {}".format(text, lang))
-            return []
+            return text
     
     translate = t
     
-    def o(self, text: str, num: int or float, lang: str, **kwargs: Any) -> str:
+    def o(self, text: str, num: int | float, lang: str, **kwargs: Any) -> str:
         """
         Gets the singular and plural form of a string like it's done in i18n.
         
