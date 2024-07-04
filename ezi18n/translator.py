@@ -6,6 +6,7 @@ from sys import argv
 
 class Translator:
     """Localize your apps easily and quickly."""
+    
     def __init__(self, filename: Optional[str] = None, suffix: Optional[str] = "_lang") -> None:
         """
         Creates a new Translator object.
@@ -27,13 +28,19 @@ class Translator:
             `Translator`
                 The newly created Translator object.
         """
-        self.filename = filename or argv[0][:-3]
+        script_path = os.path.abspath(argv[0])
+        script_dir = os.path.dirname(script_path)
+        base_filename = filename or os.path.basename(argv[0][:-3])
+        self.filename = os.path.join(script_dir, base_filename + suffix + ".json")
+        
         try:
-            with open(self.filename + suffix + ".json", "r", encoding="utf-8") as f:
+            with open(self.filename, "r", encoding="utf-8") as f:
                 self.file = json.load(f)
-        except:
+        except FileNotFoundError:
             raise ValueError("No translation file found for {}".format(os.path.basename(self.filename)))
-    
+        except json.JSONDecodeError:
+            raise ValueError("Invalid JSON format in translation file: {}".format(self.filename))
+
     def t(self, text: str, lang: str, **kwargs: Any) -> str | List[str]:
         """
         Gets the translation of a string like it's done in i18n.
