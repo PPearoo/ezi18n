@@ -31,11 +31,11 @@ class Translator:
         script_path = os.path.abspath(argv[0])
         script_dir = os.path.dirname(script_path)
         base_filename = filename or os.path.basename(argv[0][:-3])
-        self.filename = os.path.join(script_dir, base_filename + suffix + ".json")
+        self.filename: str = os.path.join(script_dir, base_filename + suffix + ".json")
         
         try:
             with open(self.filename, "r", encoding="utf-8") as f:
-                self.file = json.load(f)
+                self.file: dict = json.load(f)
         except FileNotFoundError:
             raise ValueError("No translation file found for {}".format(os.path.basename(self.filename)))
         except json.JSONDecodeError:
