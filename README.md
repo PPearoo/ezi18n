@@ -1,5 +1,8 @@
 [Github](https://github.com/PearooXD/ezi18n) | [PyPI](https://pypi.org/project/ezi18n/)
 
+# THIS PACKAGE IS DEPRECATED!!!
+# Please use [discord-localization](https://pypi.org/p/discord-localization)
+
 --------
 ## Setting up
  Start by downloading the package via pip.
